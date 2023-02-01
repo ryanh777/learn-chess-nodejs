@@ -4,7 +4,7 @@ const Student = require("./models/Student")
 require("dotenv/config");
 
 const app = express();
-const PORT = process.env.PORT || 808;
+const PORT = process.env.PORT || 8080;
 
 // Data parsing
 app.use(express.json());
