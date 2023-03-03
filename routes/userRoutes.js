@@ -20,6 +20,16 @@ router.get("/", verify, async (req, res) => {
    }
 });
 
+router.post("/exists", async (req, res) => {
+   try {
+      const userExist = await User.findOne({ username: req.body.username });
+      if (userExist) return res.status(400).send("Username already exists");
+      res.status(200).send();
+   } catch (err) {
+      res.status(400).send(err);
+   }
+})
+
 router.post("/register", async (req, res) => {
    const { error } = registerValidation(req.body);
    if (error) return res.status(400).send(error.details[0].message);

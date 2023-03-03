@@ -16,8 +16,8 @@ app.use(
 );
 
 // Routes
-// app.use("/user", require("./routes/userRoutes"));
-// app.use("/data", require("./routes/dataStore"));
+app.use("/user", require("./routes/userRoutes"));
+app.use("/data", require("./routes/dataStore"));
 
 app.post("/", async (req, res) => {
     // try {
