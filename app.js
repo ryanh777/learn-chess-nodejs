@@ -1,6 +1,5 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const Student = require("./models/Student")
 require("dotenv/config");
 
 const app = express();
