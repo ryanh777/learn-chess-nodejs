@@ -12,10 +12,6 @@ const ChildSchema = mongoose.Schema(
 );
 
 const MoveSchema = mongoose.Schema({
-   parentID: {
-      type: String,
-      required: true,
-   },
    move: {
       type: String,
       required: true,

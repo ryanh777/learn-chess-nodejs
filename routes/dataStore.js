@@ -24,7 +24,6 @@ router.post("/", async (req, res) => {
    const move = new Move({
       move: req.body.move,
       piece: req.body.piece,
-      parentID: req.body.parentID,
    });
 
    try {
