@@ -46,6 +46,7 @@ const removeFromParent = async (parentID, body) => {
 
 router.post("/", async (req, res) => {
    const move = new Move({
+      user: req.body.user,
       move: req.body.move,
       piece: req.body.piece,
    });

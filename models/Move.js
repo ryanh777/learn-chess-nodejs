@@ -12,6 +12,10 @@ const ChildSchema = mongoose.Schema(
 );
 
 const MoveSchema = mongoose.Schema({
+   user: {
+      type: String,
+      required: true,
+   },
    move: {
       type: String,
       required: true,
