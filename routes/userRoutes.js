@@ -9,10 +9,13 @@ const router = express.Router();
 router.get("/", verify, async (req, res) => {
    try {
       const user = await User.findOne({ _id: req.user._id });
+      if (!user) {
+         res.status(400).send("user not found")
+         return
+      }
       const simpleUser = {
          username: user.username,
-         whiteRootID: user.whiteRootID,
-         blackRootID: user.blackRootID,
+         rootID: user.rootID,
       };
       res.status(200).send(simpleUser);
    } catch (err) {
@@ -42,8 +45,7 @@ router.post("/register", async (req, res) => {
       const user = new User({
          username: req.body.username,
          password: hashedPass,
-         whiteRootID: req.body.whiteRootID,
-         blackRootID: req.body.blackRootID,
+         rootID: req.body.rootID,
       });
       await user.save();
       res.status(200).send();
@@ -65,8 +67,7 @@ router.post("/login", async (req, res) => {
    const token = jwt.sign({ _id: user._id }, process.env.SECRET_TOKEN);
    const response = {
       token: token,
-      whiteRootID: user.whiteRootID,
-      blackRootID: user.blackRootID,
+      rootID: user.rootID,
    };
    res.header("auth-token", token).status(200).send(response);
 });

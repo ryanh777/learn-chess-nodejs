@@ -8,10 +8,8 @@ const registerValidation =  (data) => {
         password: Joi.string()
                 .min(4)
                 .required(),
-        whiteRootID: Joi.string()
+        rootID: Joi.string()
                 .required(),
-        blackRootID: Joi.string()
-                .required()
     })
     return schema.validate(data)
 }
